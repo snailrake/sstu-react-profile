@@ -22,18 +22,21 @@ const Login = () => {
     return (
         <div className="login-container">
             <h1>Авторизация</h1>
+
             <input
                 type="text"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 placeholder="Логин"
             />
+
             <input
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Пароль"
             />
+
             <button onClick={handleLogin}>Войти</button>
         </div>
     );

@@ -49,6 +49,7 @@ const News = () => {
             title: editTitle,
             content: editContent,
         };
+
         dispatch({ type: 'SET_NEWS', payload: updatedNews });
         setEditIndex(null);
     };
@@ -57,6 +58,7 @@ const News = () => {
         <div style={{ position: 'relative', padding: '40px 20px' }}>
             <div style={{ width: '600px', margin: '0 auto' }}>
                 <h1 style={{ textAlign: 'center' }}>Новости</h1>
+
                 <ul style={{ padding: 0, listStyle: 'none' }}>
                     {news.map((item, index) => (
                         <li
@@ -87,7 +89,10 @@ const News = () => {
                                     />
                                     <div style={{ marginTop: '10px' }}>
                                         <button onClick={handleSaveEdit}>Сохранить</button>
-                                        <button onClick={() => setEditIndex(null)} style={{ marginLeft: '10px' }}>
+                                        <button
+                                            onClick={() => setEditIndex(null)}
+                                            style={{ marginLeft: '10px' }}
+                                        >
                                             Отмена
                                         </button>
                                     </div>
@@ -95,12 +100,24 @@ const News = () => {
                             ) : (
                                 <>
                                     <h3 style={{ marginBottom: '5px' }}>{item.title}</h3>
-                                    <p style={{ marginBottom: '5px', fontStyle: 'italic' }}>Автор: {item.author}</p>
+                                    <p style={{ marginBottom: '5px', fontStyle: 'italic' }}>
+                                        Автор: {item.author}
+                                    </p>
                                     <p>{item.content}</p>
+
                                     {isAuthenticated && currentUser === item.author && (
                                         <div style={{ marginTop: '10px' }}>
-                                            <button className="news-button" onClick={() => handleEdit(index)}>Изменить</button>
-                                            <button className="news-button" onClick={() => handleDelete(index)} style={{ marginLeft: '10px' }}>
+                                            <button
+                                                className="news-button"
+                                                onClick={() => handleEdit(index)}
+                                            >
+                                                Изменить
+                                            </button>
+                                            <button
+                                                className="news-button"
+                                                onClick={() => handleDelete(index)}
+                                                style={{ marginLeft: '10px' }}
+                                            >
                                                 Удалить
                                             </button>
                                         </div>
@@ -125,7 +142,10 @@ const News = () => {
                         backgroundColor: '#f9f9f9',
                     }}
                 >
-                    <h2 style={{ marginTop: 0, marginBottom: '10px' }}>Добавить новость</h2>
+                    <h2 style={{ marginTop: 0, marginBottom: '10px' }}>
+                        Добавить новость
+                    </h2>
+
                     <input
                         type="text"
                         value={title}
@@ -133,6 +153,7 @@ const News = () => {
                         placeholder="Заголовок"
                         style={{ width: '100%', marginBottom: '10px' }}
                     />
+
                     <textarea
                         value={content}
                         onChange={(e) => setContent(e.target.value)}
@@ -140,7 +161,14 @@ const News = () => {
                         rows={4}
                         style={{ width: '100%', resize: 'vertical' }}
                     />
-                    <button className="news-button" onClick={handleAddNews} style={{ marginTop: '10px', width: '100%' }}>Добавить</button>
+
+                    <button
+                        className="news-button"
+                        onClick={handleAddNews}
+                        style={{ marginTop: '10px', width: '100%' }}
+                    >
+                        Добавить
+                    </button>
                 </div>
             )}
         </div>
